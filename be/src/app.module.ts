@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DataConnection } from './data.db';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DataDao } from './data.dao';
+import { DataConnection } from './data.db';
 
 @Module({
   imports: [
@@ -15,9 +15,6 @@ import { DataDao } from './data.dao';
     DataConnection,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    DataDao
-  ],
+  providers: [AppService, DataDao],
 })
 export class AppModule {}
