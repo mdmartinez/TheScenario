@@ -28,10 +28,7 @@ export class AppController {
   @Post('create')
   async create(@Body() formData: Form) {
     try {
-      // Validate the incoming data against the schema
       const validatedData = formSchema.parse(formData);
-
-      // Process the form data (you can add your logic here)
       const result = await this.appService.create(validatedData);
 
       return {
@@ -41,7 +38,6 @@ export class AppController {
       };
     } catch (error) {
       if (error instanceof z.ZodError) {
-        // If it's a validation error, return the error messages
         return {
           success: false,
           message: 'Validation failed',
@@ -59,10 +55,7 @@ export class AppController {
   @Put(':id')
   async update(@Param('id') id: string, @Body() formData: Form) {
     try {
-      // Validate the incoming data against the schema
       const validatedData = formSchema.parse(formData);
-
-      // Process the form data
       const result = await this.appService.update(id, validatedData);
 
       return {
